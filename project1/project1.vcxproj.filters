@@ -36,6 +36,15 @@
     <ClInclude Include="AnswerFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DisplayResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WriteResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PromptUser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +63,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AnswerFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WriteResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PromptUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
