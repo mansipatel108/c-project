@@ -145,7 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnswerFile.h" />
+    <ClInclude Include="FileUtility.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="QuizFile.h" />
     <ClInclude Include="stdafx.h" />
@@ -153,7 +153,7 @@
     <ClInclude Include="UserInfo.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AnswerFile.cpp" />
+    <ClCompile Include="FileUtility.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="project1.cpp" />
     <ClCompile Include="QuizFile.cpp" />
