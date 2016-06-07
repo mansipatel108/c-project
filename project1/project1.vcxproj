@@ -146,16 +146,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileUtility.h" />
+    <ClInclude Include="DisplayResult.h" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="PromptUser.h" />
     <ClInclude Include="QuizFile.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UserInfo.h" />
+    <ClInclude Include="WriteResult.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileUtility.cpp" />
+    <ClCompile Include="DisplayResult.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="project1.cpp" />
+    <ClCompile Include="PromptUser.cpp" />
     <ClCompile Include="QuizFile.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -164,6 +169,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="UserInfo.cpp" />
+    <ClCompile Include="WriteResult.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
