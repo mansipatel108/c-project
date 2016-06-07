@@ -2,10 +2,16 @@
 //
 
 #include "stdafx.h"
+#include "Error.h"
 
 
 int main()
 {
+
+	string hi;
+	Error e = Error();
+	cin >> hi;
+
     return 0;
 }
 

@@ -4,6 +4,7 @@
 
 Error::Error()
 {
+	cout << "Error message";
 }
 
 void Error::displayError(string message){
