@@ -2,14 +2,19 @@
 //
 
 #include "stdafx.h"
+#include <iostream>
 #include "Error.h"
+#include "FileUtility.h"
+
+using namespace std;
 
 
 int main()
 {
 
+	FileUtility fu = FileUtility();
+
 	string hi;
-	Error e = Error();
 	cin >> hi;
 
     return 0;
