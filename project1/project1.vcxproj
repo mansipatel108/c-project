@@ -155,6 +155,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UserInfo.h" />
+    <ClInclude Include="Util.h" />
     <ClInclude Include="WriteResult.h" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +174,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="UserInfo.cpp" />
+    <ClCompile Include="Util.cpp" />
     <ClCompile Include="WriteResult.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

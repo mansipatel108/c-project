@@ -1,0 +1,16 @@
+#include <iostream>
+#include <sstream>
+
+#pragma once
+#include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+class Util
+{
+public:
+	Util();
+	~Util();
+	vector<string> splitString(string s, char del);
+};
+

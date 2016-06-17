@@ -1,15 +1,17 @@
 #include <iostream>
-#include <vector>
 #include <sstream>
-
+#include "Util.h"
 #pragma once
+#include <iostream>
+#include <vector>
+#include <fstream>
 using namespace std;
 class Question
 {
 public:
 	Question(string question);
 	~Question();
-	vector<string> splitString(string s, char del);
+	vector<string> v_add(string s );
 
 private:
 	string question;
