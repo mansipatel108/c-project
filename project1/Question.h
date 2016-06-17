@@ -1,5 +1,7 @@
-#include <string>
 #include <iostream>
+#include <vector>
+#include <sstream>
+
 #pragma once
 using namespace std;
 class Question
@@ -7,6 +9,7 @@ class Question
 public:
 	Question(string question);
 	~Question();
+	vector<string> splitString(string s, char del);
 
 private:
 	string question;
