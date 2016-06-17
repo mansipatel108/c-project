@@ -148,6 +148,7 @@
     <ClInclude Include="FileUtility.h" />
     <ClInclude Include="DisplayResult.h" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="PromptUser.h" />
     <ClInclude Include="Question.h" />
     <ClInclude Include="QuizFile.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="FileUtility.cpp" />
     <ClCompile Include="DisplayResult.cpp" />
     <ClCompile Include="Error.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="project1.cpp" />
     <ClCompile Include="PromptUser.cpp" />
     <ClCompile Include="Question.cpp" />
