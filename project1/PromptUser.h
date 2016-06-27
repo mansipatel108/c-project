@@ -2,15 +2,20 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class PromptUser
 {
 public:
-	PromptUser(string options[]);
+	PromptUser(string prompt, vector<string> checks);
+	string getResponse();
 	~PromptUser();
-	int prompt();
+	bool validateInput(string str);
+private:
+	string responseString;
+	vector<string> checks;
+	bool onlyLatinCheck(string str);
 };
-
 

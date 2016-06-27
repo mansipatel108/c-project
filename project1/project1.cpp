@@ -8,25 +8,18 @@
 #include <iostream>
 #include <vector>
 #include "FileUtility.h"
-
+#include "PromptUser.h"
 
 int main()
 {
-	// load thhe quiz file
-	FileUtility fu = FileUtility();
-	string quiz = fu.file_load("quiz/firstquiz.txt");
+	
+	// get the users details
+	vector<string> checks = vector<string>();
+	checks.push_back("onlyLatin");
+	PromptUser prompt = PromptUser("Please enter your name (latin characters only)", checks);
+	
 
-	// parse the file by new line in to  vector 	
-	Util q = Util();
-	vector<string> quizLines =q.splitString(quiz,'\n');
-	vector<Question> question;
-   int counter = 0;
-		// loop through the vector of lines
-		for (auto i = quizLines.begin(); i != quizLines.end(); ++i) {
-			Question q = Question(quizLines[counter]);
-			question.push_back(q);
-			counter++;
-		}
+
 
 	string hi;
 	Error e = Error();
