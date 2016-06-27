@@ -1,13 +1,13 @@
 #include <string>
 #include <iostream>
+#include <stdlib.h>
 #pragma once
 
 using namespace std;
 class Error
 {
 public:
-	Error();
+	Error(string msg);
 	~Error();
-	void displayError(string str);
 };
 

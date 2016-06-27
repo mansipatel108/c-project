@@ -2,13 +2,14 @@
 #include "Error.h"
 
 
-Error::Error()
-{
-	cout << "Error message";
-}
-
-void Error::displayError(string message){
-
+Error::Error(string message) {
+	
+	cout << message << endl;
+	cout << "Press enter to exit program";
+	string conformExit;
+	cin.ignore();
+	getline(cin, conformExit);
+	exit(EXIT_FAILURE);
 }
 
 
