@@ -30,18 +30,30 @@ Question::Question(string question)
 {	
 	Util u = Util();
 	vector<string>questionpie = u.splitString(question,'~');
-	/* question = questionpie[0];
-	
+	quizQquestion = questionpie[0];
 	answer1 = questionpie[1];
 	answer2 = questionpie[2];
 	answer3 = questionpie[3];
 	answer4 = questionpie[4];
     correct_answer = answer1;
 	
-	cout << questionpie.size();
-	cout << question << answer1 << " " << answer2 << " " << answer3 << " " << answer4 << " " << correct_answer<< endl;
-	*/
-	
+}
+
+void Question::askQuestion() {
+	vector<string> answers = vector<string>();
+	Menu m = Menu(quizQquestion, buildAnswers());
+	m.getPromptResponse();
+}
+
+vector<string> Question::buildAnswers() {
+
+	vector<string> answers;
+	answers.push_back(answer1);
+	answers.push_back(answer2);
+	answers.push_back(answer3);
+	answers.push_back(answer4);
+
+	return answers;
 }
 
 

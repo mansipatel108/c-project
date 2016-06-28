@@ -31,7 +31,7 @@ void Menu::showPrompt() {
 	int counter = 0;
 	for (auto i = Menu::choices.begin(); i != Menu::choices.end(); ++i) {
 		counter++;
-		std::cout << '\t' << "[" << counter << "]" << *i << endl;
+		std::cout << '\t' << "[" << counter << "] " << *i << endl;
 	}
 }
 
@@ -50,6 +50,7 @@ int Menu::prompt() {
 		cout << "-> ";
 
 		// get the users input
+		cin.ignore();
 		getline(cin, input);
 
 		// show invalid input prompt if input is not a valid number
