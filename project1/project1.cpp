@@ -1,26 +1,27 @@
-// project1.cpp : Defines the entry point for the console application.
-//
-
+#include <iostream>
+#include <vector>
+#include <ctype.h>
 #include "stdafx.h"
 #include "Error.h"
 #include "Util.h"
 #include "Question.h"
-#include <iostream>
-#include <vector>
 #include "FileUtility.h"
 #include "PromptUser.h"
 #include "Util.h"
-#include <ctype.h>
 
+/**
+	Takes the quizfile string and parses it into a vector of question objects
+*/
 vector<Question> generateQuestions(string quizFile) {
 
 	// parse the questions/answers by line
 	Util util = Util();
 	vector<string> qa = util.splitString(quizFile, '\n');
 
-	// store the questions in a vector
+	// this holds the questions
 	vector<Question> questions = vector<Question>();
 
+	// add the questions to the vector
 	int counter = 0;
 	for (auto i = qa.begin(); i != qa.end(); i++) {
 		questions.push_back(Question(qa[counter]));
@@ -31,6 +32,9 @@ vector<Question> generateQuestions(string quizFile) {
 
 }
 
+/**
+	Gets the users answers to each question
+*/
 void administerQuiz(vector<Question> &questions) {
 
 	int counter = 0;
@@ -40,6 +44,9 @@ void administerQuiz(vector<Question> &questions) {
 	}
 }
 
+/**
+	Calculates the users results as a percentage
+*/
 int calculateScore(vector<Question> &questions) {
 
 	// create counters
@@ -47,8 +54,10 @@ int calculateScore(vector<Question> &questions) {
 	int correctCounter = 0;
 	int quantityCounter = 0;
 
+	// iterate through each question to check the result
 	for (auto i = questions.begin(); i != questions.end(); i++) {
 
+		// only count correct results
 		if (questions[indexCounter].getResult()) {
 			correctCounter++;
 		}
@@ -58,6 +67,7 @@ int calculateScore(vector<Question> &questions) {
 
 	}
 
+	// calculate the final percentage
 	if (correctCounter > 0) {
 		return ((float)correctCounter / (float)quantityCounter) * 100;
 	}
@@ -66,6 +76,9 @@ int calculateScore(vector<Question> &questions) {
 	}
 }
 
+/**
+	Predicate function for use in sorting vectors
+*/
 bool nameSort(string x, string y) {
 	return x < y;
 }
@@ -77,16 +90,24 @@ int main()
 	FileUtility fu = FileUtility();
 	Util util = Util();
 
-	// get the users name
+	///// get the users name
+
+	// declare the checks for obtaining user input
 	vector<string> checks = vector<string>();
 	checks.push_back("onlyLatin");
+
+	// prompt the user for their first and last name
 	PromptUser firstName = PromptUser("Please enter your first name (latin characters only)", checks);
 	PromptUser lastName = PromptUser("Please enter your last name (latin characters only)", checks);
+
+	// obtain the prompt results
 	string firstNameStr = firstName.getResponse();
 	string lastNameStr = lastName.getResponse();
-	string usernameDispaly = firstNameStr + " " + lastNameStr;
-	string username = firstNameStr + lastNameStr;
-	util.lowercase(username);							// mutates username
+
+	// create the user name from the users input
+	string usernameDispaly = firstNameStr + " " + lastNameStr;		// used in console display
+	string username = firstNameStr + lastNameStr;					// used in files and internally
+	util.lowercase(username);										// mutates username
 	
 
 	////// Get the users previous high score
@@ -97,8 +118,7 @@ int main()
 	// load or create answer file
 	if (fu.file_exists("names.txt")) {
 		answerFile = fu.load_answers();
-	}
-	else {
+	} else {
 		fu.file_write("names.txt");
 		answerFile = vector<string>();
 	}
@@ -131,8 +151,7 @@ int main()
 	
 	if (previousScore == -1) {
 		cout << "Welcome to the quiz" << endl;
-	}
-	else {
+	} else {
 		cout << "Welcome back " << usernameDispaly << endl;
 		cout << "Your previous score was " << previousScore << endl;
 	}
@@ -145,8 +164,7 @@ int main()
 	// load the quiz file and administer the quiz
 	if (fu.file_exists("quiz/firstquiz.txt")) {
 		questions = generateQuestions(fu.file_load("quiz/firstquiz.txt"));
-	}
-	else {
+	} else {
 		Error e = Error("Quiz file could not be found. Contact a programmer.");
 	}
 
@@ -167,7 +185,7 @@ int main()
 
 	cout << "Time time you got " << percentCorrect << "%" << endl;
 	
-	// record the answer if there is not previous schore
+	// record the answer if there is not a previous schore
 	bool writeFlag = false;
 	if (matchIndex == -1) {
 
@@ -181,13 +199,13 @@ int main()
 		writeFlag = true;
 	}
 	
+	// only write to the file if necessary
 	if (writeFlag) {
 		fu.file_write("names.txt", answerFile);
 	}
 
 	string hi;
-	cin.ignore();
-	cin >> hi;
+	std::cin >> hi;
 
 	return 0;
 }
