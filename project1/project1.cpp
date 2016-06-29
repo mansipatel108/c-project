@@ -30,20 +30,40 @@ vector<Question> generateQuestions(string quizFile) {
 
 }
 
-void administerQuiz(vector<Question> questions) {
+void administerQuiz(vector<Question> &questions) {
 
 	int counter = 0;
 	for (auto i = questions.begin(); i != questions.end(); i++) {
 		questions[counter].askQuestion();
-		
 		counter++;
 	}
-
-	cout << "quiz done";
-
 }
 
+int calculateScore(vector<Question> &questions) {
 
+	// create counters
+	int indexCounter = 0;
+	int correctCounter = 0;
+	int quantityCounter = 0;
+
+	for (auto i = questions.begin(); i != questions.end(); i++) {
+
+		if (questions[indexCounter].getResult()) {
+			correctCounter++;
+		}
+
+		indexCounter++;
+		quantityCounter++;
+
+	}
+
+	if (correctCounter > 0) {
+		return ((float)correctCounter / (float)quantityCounter) * 100;
+	}
+	else {
+		return 0;
+	}
+}
 
 int main()
 {
@@ -63,15 +83,22 @@ int main()
 	
 	}
 
-	// load the quiz file
+	// load the quiz file and administer the quiz
 	if (fu.file_exists("quiz/firstquiz.txt")) {
 		vector<Question> questions = generateQuestions(fu.file_load("quiz/firstquiz.txt"));
+
+		// administer quiz and get percentage of correct answers
 		administerQuiz(questions);
+		float percentCorrect = calculateScore(questions);
+
+		// record the quiz results
+
 	}
 	else {
 		Error e = Error("Quiz file could not be found. Contact a programmer.");
 	}
-
+	
+	
 	string hi;
 	cin.ignore();
 	cin >> hi;

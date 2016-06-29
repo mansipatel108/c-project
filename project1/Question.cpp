@@ -30,18 +30,17 @@ Question::Question(string question)
 {	
 	Util u = Util();
 	vector<string>questionpie = u.splitString(question,'~');
-	quizQquestion = questionpie[0];
+	quizQuestion = questionpie[0];
 	answer1 = questionpie[1];
 	answer2 = questionpie[2];
 	answer3 = questionpie[3];
 	answer4 = questionpie[4];
     correct_answer = std::stoi(questionpie[5]); // save the answer as an int for easier comparison
-	
 }
 
 void Question::askQuestion() {
 	vector<string> answers = vector<string>();
-	Menu m = Menu(quizQquestion, buildAnswers());
+	Menu m = Menu(quizQuestion, buildAnswers());
 
 	int response = m.getPromptResponse();
 
@@ -53,6 +52,11 @@ void Question::askQuestion() {
 	} else if (response == correct_answer) {
 		questionStatus = true;
 	}
+}
+
+bool Question::getResult() {
+	cout << "get result " << questionStatus << endl;
+	return questionStatus;
 }
 
 vector<string> Question::buildAnswers() {

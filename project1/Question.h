@@ -17,9 +17,10 @@ public:
 	~Question();
 	vector<string> v_add(string s );
 	void askQuestion();
+	bool getResult();
 
+	string quizQuestion;
 private:
-	string quizQquestion;
 	string answer1;
 	string answer2;
 	string answer3;
@@ -29,4 +30,3 @@ private:
 	void parsequestion();
 	vector<string> buildAnswers();
 };
-
