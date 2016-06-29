@@ -35,14 +35,18 @@ Question::Question(string question)
 	answer2 = questionpie[2];
 	answer3 = questionpie[3];
 	answer4 = questionpie[4];
-    correct_answer = answer1;
+    correct_answer = std::stoi(questionpie[5]); // save the answer as an int for easier comparison
 	
 }
 
 void Question::askQuestion() {
 	vector<string> answers = vector<string>();
 	Menu m = Menu(quizQquestion, buildAnswers());
-	m.getPromptResponse();
+
+	// mark if they got the question correct
+	if (m.getPromptResponse() == correct_answer) {
+		questionStatus = true;
+	}
 }
 
 vector<string> Question::buildAnswers() {

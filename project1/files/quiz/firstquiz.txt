@@ -1,4 +1,4 @@
 what is the best color?~red~blue~purple~yellow~1
-what is the best color?~red~blue~purple~yellow~1
-what is the best color?~red~blue~purple~yellow~1
-what is the best color?~red~blue~purple~yellow~1
+which company is the largest by revenue?~google~microsoft~samsung~apple~3
+who brings presents on christmas~santa~the devil~mr burns~samsung~1
+where am I sitting~on a chair~in a car~on a plane~on cloud nine~4

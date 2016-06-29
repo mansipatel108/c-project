@@ -51,7 +51,7 @@ int Menu::prompt() {
 
 		// get the users input
 		cin.ignore();
-		getline(cin, input);
+		cin >> input;
 
 		// show invalid input prompt if input is not a valid number
 		stringstream myStream(input);

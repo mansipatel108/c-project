@@ -24,7 +24,8 @@ private:
 	string answer2;
 	string answer3;
 	string answer4;
-	string correct_answer;
+	int correct_answer;
+	bool questionStatus = false;
 	void parsequestion();
 	vector<string> buildAnswers();
 };
