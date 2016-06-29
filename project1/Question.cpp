@@ -55,7 +55,6 @@ void Question::askQuestion() {
 }
 
 bool Question::getResult() {
-	cout << "get result " << questionStatus << endl;
 	return questionStatus;
 }
 

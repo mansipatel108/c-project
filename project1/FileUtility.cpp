@@ -53,7 +53,7 @@ string FileUtility::file_load(string file_name) {
 	@return true if written, false otherwise
 */
 bool FileUtility::file_write(string file_name) {
-	file_write(file_name, "");
+	file_write(file_name, 0.0);
 	return true;
 }
 
@@ -63,7 +63,7 @@ bool FileUtility::file_write(string file_name) {
 	@param file_name The filename
 	@param contents The file contents
 */
-bool FileUtility::file_write(string file_name, string contents) {
+bool FileUtility::file_write(string file_name, float contents) {
 
 	// open file and write contents
 	std::ofstream fs;
