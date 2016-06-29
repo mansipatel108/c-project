@@ -35,9 +35,11 @@ void administerQuiz(vector<Question> questions) {
 	int counter = 0;
 	for (auto i = questions.begin(); i != questions.end(); i++) {
 		questions[counter].askQuestion();
+		
 		counter++;
 	}
 
+	cout << "quiz done";
 
 }
 

@@ -6,7 +6,7 @@
 #include <vector>
 #include <fstream>
 #include "Menu.h"
-
+#include "Error.h"
 
 
 using namespace std;

@@ -43,8 +43,14 @@ void Question::askQuestion() {
 	vector<string> answers = vector<string>();
 	Menu m = Menu(quizQquestion, buildAnswers());
 
+	int response = m.getPromptResponse();
+
+	// quit the quiz
+	if (response == -1) {
+		Error e = Error("The quiz has been terminated");
+
 	// mark if they got the question correct
-	if (m.getPromptResponse() == correct_answer) {
+	} else if (response == correct_answer) {
 		questionStatus = true;
 	}
 }
