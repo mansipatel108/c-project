@@ -150,7 +150,7 @@ void quiz() {
 	}
 
 	// display welcome message
-
+	cout << endl << endl;
 	if (previousScore == -1) {
 		cout << "Welcome to the quiz" << endl;
 	}
@@ -165,8 +165,8 @@ void quiz() {
 	vector<Question> questions;
 
 	// load the quiz file and administer the quiz
-	if (fu.file_exists("quiz/firstquiz.txt")) {
-		questions = generateQuestions(fu.file_load("quiz/firstquiz.txt"));
+	if (fu.file_exists("quiz.txt")) {
+		questions = generateQuestions(fu.file_load("quiz.txt"));
 	}
 	else {
 		Error e = Error("Quiz file could not be found. Contact a programmer.");
