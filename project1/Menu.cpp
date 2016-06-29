@@ -51,9 +51,7 @@ int Menu::prompt() {
 
 		// get the users input
 		getline(cin, input);
-
-		cout << "input " << input << endl;
-
+		
 		// show invalid input prompt if input is not a valid number
 		stringstream myStream(input);
 		if (!(myStream >> choice)) {
