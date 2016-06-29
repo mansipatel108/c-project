@@ -47,13 +47,24 @@ string FileUtility::file_load(string file_name) {
 }
 
 /**
+	Loads the answer into a string vector
+*/
+vector<string> FileUtility::load_answers() {
+
+	string answers = file_load("names.txt");
+	Util util = Util();
+	return util.splitString(answers, '\n');
+
+}
+
+/**
 	Writes an new empty file to the "files" folder
 
 	@param file_name The file name
 	@return true if written, false otherwise
 */
 bool FileUtility::file_write(string file_name) {
-	file_write(file_name, 0.0);
+	file_write(file_name, vector<string>());
 	return true;
 }
 
@@ -63,12 +74,20 @@ bool FileUtility::file_write(string file_name) {
 	@param file_name The filename
 	@param contents The file contents
 */
-bool FileUtility::file_write(string file_name, float contents) {
+bool FileUtility::file_write(string file_name, vector<string> contents) {
+
+	// build file contents
+	string fileContents;
+	int index = 0;
+	for (auto i = contents.begin(); i != contents.end(); i++) {
+		fileContents += contents[index] + "\n";
+		index++;
+	}
 
 	// open file and write contents
 	std::ofstream fs;
 	fs.open(FILE_FOLDER + "/" + file_name);
-	fs << contents;
+	fs << fileContents;
 	fs.close();
 
 	return true;

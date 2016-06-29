@@ -10,6 +10,7 @@
 #include "FileUtility.h"
 #include "PromptUser.h"
 #include "Util.h"
+#include <ctype.h>
 
 vector<Question> generateQuestions(string quizFile) {
 
@@ -65,50 +66,76 @@ int calculateScore(vector<Question> &questions) {
 	}
 }
 
+bool nameSort(string x, string y) {
+	return x < y;
+}
+
 int main()
 {
 
 	// method variables
 	FileUtility fu = FileUtility();
+	Util util = Util();
 
 	// get the users name
 	vector<string> checks = vector<string>();
 	checks.push_back("onlyLatin");
 	PromptUser firstName = PromptUser("Please enter your first name (latin characters only)", checks);
 	PromptUser lastName = PromptUser("Please enter your last name (latin characters only)", checks);
-	string fileName = firstName.getResponse() + lastName.getResponse();
-	string username = firstName.getResponse() + " " + lastName.getResponse();
-
+	string firstNameStr = firstName.getResponse();
+	string lastNameStr = lastName.getResponse();
+	string usernameDispaly = firstNameStr + " " + lastNameStr;
+	string username = firstNameStr + lastNameStr;
+	util.lowercase(username);							// mutates username
+	
 
 	////// Get the users previous high score
 
-	// holds the users current high score
-	string answerFile;
+	vector<string> answerFile;		// holds the users details
+	float previousScore = -1;		// holds their previous score, if any
 
-	if (fu.file_exists("answers/" + fileName)) {
-		answerFile = fu.file_load("answers/" + fileName);
+	// load or create answer file
+	if (fu.file_exists("names.txt")) {
+		answerFile = fu.load_answers();
 	}
 	else {
-		fu.file_write("answers/" + fileName);
-		answerFile = "0.0";
+		fu.file_write("names.txt");
+		answerFile = vector<string>();
 	}
 
-	// convert answer file value to float for comparisons below
-	// and display welcome message
-	float previousScore;
-	if (answerFile == "" || answerFile == "0.0") {
-		previousScore = 0.0;
+	// find if user exists in answer file
+	int indexCounter = 0;
+	int matchIndex = -1;
+	for (auto i = answerFile.begin(); i != answerFile.end(); i++) {
+
+		// get their name
+		vector<string> name = util.splitString(answerFile[indexCounter], ' ');
+
+		// check the next entry if there are no elements
+		if (name.size() == 0) {
+			continue;
+		}
+
+		// see if we find a match
+		if (name[0] == username) {
+			matchIndex = indexCounter;
+			previousScore = stof(name[1]);
+			break;
+		}
+		
+		indexCounter++;
+
+	}
+
+	// display welcome message
+	
+	if (previousScore == -1) {
 		cout << "Welcome to the quiz" << endl;
 	}
 	else {
-		previousScore = std::stof(answerFile);
-		cout << "Welcome back " << username << endl;
+		cout << "Welcome back " << usernameDispaly << endl;
 		cout << "Your previous score was " << previousScore << endl;
 	}
-
-
-
-
 
 	////// Run the quiz
 
@@ -125,30 +152,37 @@ int main()
 
 	// administer quiz and get percentage of correct answers
 	administerQuiz(questions);								// will mutate questions variable
-	float percentCorrect = calculateScore(questions);
+	int percentCorrect = calculateScore(questions);
 
-
+	
 	////// display and record results
 
 	// display percentage correct
-	if (previousScore != 0.0) {
-		cout << "Previous score: " << answerFile << "%" << endl;;
+	if (previousScore >= 0) {
+		cout << "Previous score: " << previousScore << "%" << endl;;
 	}
 	else {
 		cout << "Previous score: no score recorded" << endl;
 	}
 
 	cout << "Time time you got " << percentCorrect << "%" << endl;
-
+	
 	// record the answer if there is not previous schore
-	if (previousScore == 0.0) {
+	bool writeFlag = false;
+	if (matchIndex == -1) {
 
-		fu.file_write("answers/" + fileName, percentCorrect);
+		answerFile.push_back(username + " " + to_string(percentCorrect));
+		sort(answerFile.begin(), answerFile.end(), nameSort);
+		writeFlag = true;
 
-		// record the quiz results if the new score is better
+	// record the quiz results if the new score is better
+	} else if (percentCorrect > previousScore) {
+		answerFile[matchIndex] = username + " " + to_string(percentCorrect);
+		writeFlag = true;
 	}
-	else if (percentCorrect > (float)std::stoi(answerFile)) {
-		fu.file_write("answers/" + fileName, percentCorrect);
+	
+	if (writeFlag) {
+		fu.file_write("names.txt", answerFile);
 	}
 
 	string hi;

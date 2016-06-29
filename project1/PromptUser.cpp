@@ -15,7 +15,7 @@ PromptUser::PromptUser(string prompt, vector<string> requiredChecks)
 
 		// get the users response
 		string response;
-		cin >> response;
+		getline(cin, response);
 
 		// return the response if there are no validtions to perform
 		if (requiredChecks.size() == 0) {
@@ -52,7 +52,7 @@ bool PromptUser::validateInput(string str) {
 	if (std::find(checks.begin(), checks.end(), "onlyLatin") != checks.end()) {
 		if (!onlyLatinCheck(str)) { 
 			cout << endl << "*** ERROR ***" <<endl ;
-			cout << "Please enter only latin characters" << endl << endl;
+			cout << "Please enter only latin characters (no spaces)" << endl << endl;
 			return false;
 		}
 	}

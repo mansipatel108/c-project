@@ -25,7 +25,7 @@ int Menu::getPromptResponse() {
 void Menu::showPrompt() {
 	// show the prompt
 	cout << endl << Menu::menuPrompt << endl;
-	cout << '\t' << "[0] Exit menu" << endl;
+	cout << '\t' << "[0] Exit program" << endl;
 
 	// show the choices
 	int counter = 0;
@@ -50,8 +50,9 @@ int Menu::prompt() {
 		cout << "-> ";
 
 		// get the users input
-		cin.ignore();
-		cin >> input;
+		getline(cin, input);
+
+		cout << "input " << input << endl;
 
 		// show invalid input prompt if input is not a valid number
 		stringstream myStream(input);
