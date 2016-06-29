@@ -83,9 +83,10 @@ bool nameSort(string x, string y) {
 	return x < y;
 }
 
-int main()
-{
-
+/**
+	main quiz program
+*/
+void quiz() {
 	// method variables
 	FileUtility fu = FileUtility();
 	Util util = Util();
@@ -108,17 +109,18 @@ int main()
 	string usernameDispaly = firstNameStr + " " + lastNameStr;		// used in console display
 	string username = firstNameStr + lastNameStr;					// used in files and internally
 	util.lowercase(username);										// mutates username
-	
 
-	////// Get the users previous high score
+
+																	////// Get the users previous high score
 
 	vector<string> answerFile;		// holds the users details
 	float previousScore = -1;		// holds their previous score, if any
 
-	// load or create answer file
+									// load or create answer file
 	if (fu.file_exists("names.txt")) {
 		answerFile = fu.load_answers();
-	} else {
+	}
+	else {
 		fu.file_write("names.txt");
 		answerFile = vector<string>();
 	}
@@ -142,16 +144,17 @@ int main()
 			previousScore = stof(name[1]);
 			break;
 		}
-		
+
 		indexCounter++;
 
 	}
 
 	// display welcome message
-	
+
 	if (previousScore == -1) {
 		cout << "Welcome to the quiz" << endl;
-	} else {
+	}
+	else {
 		cout << "Welcome back " << usernameDispaly << endl;
 		cout << "Your previous score was " << previousScore << endl;
 	}
@@ -164,7 +167,8 @@ int main()
 	// load the quiz file and administer the quiz
 	if (fu.file_exists("quiz/firstquiz.txt")) {
 		questions = generateQuestions(fu.file_load("quiz/firstquiz.txt"));
-	} else {
+	}
+	else {
 		Error e = Error("Quiz file could not be found. Contact a programmer.");
 	}
 
@@ -172,7 +176,7 @@ int main()
 	administerQuiz(questions);								// will mutate questions variable
 	int percentCorrect = calculateScore(questions);
 
-	
+
 	////// display and record results
 
 	// display percentage correct
@@ -184,7 +188,7 @@ int main()
 	}
 
 	cout << "Time time you got " << percentCorrect << "%" << endl;
-	
+
 	// record the answer if there is not a previous schore
 	bool writeFlag = false;
 	if (matchIndex == -1) {
@@ -193,20 +197,46 @@ int main()
 		sort(answerFile.begin(), answerFile.end(), nameSort);
 		writeFlag = true;
 
-	// record the quiz results if the new score is better
-	} else if (percentCorrect > previousScore) {
+		// record the quiz results if the new score is better
+	}
+	else if (percentCorrect > previousScore) {
 		answerFile[matchIndex] = username + " " + to_string(percentCorrect);
 		writeFlag = true;
 	}
-	
+
 	// only write to the file if necessary
 	if (writeFlag) {
 		fu.file_write("names.txt", answerFile);
 	}
+}
 
-	string hi;
-	std::cin >> hi;
 
+int main()
+{
+
+	// choices for continuing of exiting
+	// the menu automatically shows an exit program prompt
+	vector<string> choices = vector<string>();
+	choices.push_back("yes");
+
+	// the continuation menu
+	Menu m = Menu("Would you like to take the quiz again", choices);
+	
+	// run main quiz program until user wants to exit
+	while (true) {
+		
+		cout << endl << endl;
+		quiz();
+		cout << endl << endl;
+
+		if (m.getPromptResponse() == 1) {
+			continue;
+		} else {
+			break;
+		}
+
+	}
+	
 	return 0;
 }
 

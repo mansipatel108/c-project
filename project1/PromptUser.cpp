@@ -37,6 +37,12 @@ PromptUser::PromptUser(string prompt, vector<string> requiredChecks)
  * Returns true if every character is a latin letter, false otherwise
  */
 bool PromptUser::onlyLatinCheck(string str) {
+	
+	// strings of zero length are invalid
+	if (str.length() == 0) {
+		return false;
+	}
+
 	for (char& c : str) {
 		if (!(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')) {
 			return false;
