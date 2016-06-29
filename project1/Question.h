@@ -15,7 +15,6 @@ class Question
 public:
 	Question(string question);
 	~Question();
-	vector<string> v_add(string s );
 	void askQuestion();
 	bool getResult();
 
