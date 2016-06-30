@@ -1,4 +1,4 @@
-What is the second largest country by land area?Canada~Russia~United States~Brazil~0
-Which company is the largest by revenue?Google~Microsoft~Samsung~Apple~2
-How many provinces does Canada have?12~13~9~10~3
-Which language has is weakly typed?Haskell~JavaScript~C++~Java~1
+What is the second largest country by land area?~Canada~Russia~United States~Brazil~0
+Which company is the largest by revenue?~Google~Microsoft~Samsung~Apple~2
+How many provinces does Canada have?~12~13~9~10~3
+Which language has is weakly typed?~Haskell~JavaScript~C++~Java~1
