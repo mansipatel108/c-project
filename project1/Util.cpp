@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "Util.h"
 
-Util::Util()
-{
-}
+Util::Util(){}
+
 /**
 * Splits a string on a delimeter
 *
@@ -23,10 +22,13 @@ vector<string> Util::splitString(string s, char del) {
 	return newString;
 }
 
+/**
+	Converts a string to lowercase via mutation
+
+	@param &str The string to convert to lowercase
+*/
 void Util::lowercase(string &str) {
 	transform(str.begin(), str.end(), str.begin(), ::tolower);
 }
 
-Util::~Util()
-{
-}
+Util::~Util() {}

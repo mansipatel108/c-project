@@ -1,13 +1,14 @@
+#pragma once
 #include <iostream>
 #include <sstream>
 #include <algorithm>
 #include <string>
-
-#pragma once
 #include <iostream>
 #include <vector>
 #include <fstream>
+
 using namespace std;
+
 class Util
 {
 public:

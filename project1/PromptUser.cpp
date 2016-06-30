@@ -1,7 +1,12 @@
 #include "stdafx.h"
 #include "PromptUser.h"
 
+/**
+	Sets the prompt message and required checks the response must pass
 
+	@param prompt The prompt message
+	@param requiredChecks Contains the checks the prompt must pass
+*/
 PromptUser::PromptUser(string prompt, vector<string> requiredChecks)
 {
 
@@ -35,6 +40,8 @@ PromptUser::PromptUser(string prompt, vector<string> requiredChecks)
 
 /**
  * Returns true if every character is a latin letter, false otherwise
+
+	@param str The string to check
  */
 bool PromptUser::onlyLatinCheck(string str) {
 	
@@ -53,6 +60,8 @@ bool PromptUser::onlyLatinCheck(string str) {
 
 /**
  * Validates the input according to supplied arguments
+
+	@prompt The string to validate against all required checks
  */
 bool PromptUser::validateInput(string str) {
 	if (std::find(checks.begin(), checks.end(), "onlyLatin") != checks.end()) {
@@ -65,12 +74,12 @@ bool PromptUser::validateInput(string str) {
 	return true;
 }
 
-
+/**
+	Gets the users response to the supplied prompt
+*/
 string PromptUser::getResponse() {
 	return responseString;
 }
 
 
-PromptUser::~PromptUser()
-{
-}
+PromptUser::~PromptUser() {}

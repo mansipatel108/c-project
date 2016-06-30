@@ -1,6 +1,12 @@
 #include "stdafx.h"
 #include "Question.h"
 
+/**
+	Parses a question string into a question and answers in addition to setting
+	the correct answer.
+
+	@param The question string
+*/
 Question::Question(string question)
 {	
 	Util u = Util();
@@ -13,6 +19,9 @@ Question::Question(string question)
     correct_answer = std::stoi(questionpie[5]); // save the answer as an int for easier comparison
 }
 
+/**
+	Asks the user for their answer to the question
+*/
 void Question::askQuestion() {
 	vector<string> answers = vector<string>();
 	Menu m = Menu(quizQuestion, buildAnswers());
@@ -29,10 +38,20 @@ void Question::askQuestion() {
 	}
 }
 
+/**
+	Gets the result of the users answer
+
+	@return true if correct, false otherwise
+*/
 bool Question::getResult() {
 	return questionStatus;
 }
 
+/**
+	Builds an answer vector for use in the Menu class
+
+	@return a vector of possible answers
+*/
 vector<string> Question::buildAnswers() {
 
 	vector<string> answers;
@@ -45,10 +64,6 @@ vector<string> Question::buildAnswers() {
 }
 
 
-Question::~Question()
-{
-}
+Question::~Question() {}
 
-void Question::parsequestion()
-{
-}
+void Question::parsequestion(){}

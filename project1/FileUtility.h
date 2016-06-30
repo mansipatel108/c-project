@@ -1,16 +1,15 @@
+#pragma once
+
 #include <string>
 #include <iostream>
 #include <vector>
 #include "Util.h"
-
-#pragma once
 
 using namespace std;
 
 class FileUtility
 {
 public:
-
 	FileUtility();
 	~FileUtility();
 	string file_load(string file_name);

@@ -3,6 +3,9 @@
 
 /**
 	Loads a prompt and choice into a class variables
+
+	@param prompt The menu prompt
+	@param choices The menu choices the user can select
 */
 Menu::Menu(string prompt, vector<string> choices) {
 	Menu::menuPrompt = prompt;
@@ -12,6 +15,7 @@ Menu::Menu(string prompt, vector<string> choices) {
 
 /**
 	Gets the users repsonse to the prompt.
+
 	@return the vector element the user selected (zero-indexed)
 */
 int Menu::getPromptResponse() {

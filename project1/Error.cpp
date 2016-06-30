@@ -1,18 +1,23 @@
 #include "stdafx.h"
 #include "Error.h"
 
+/**
+	Shows a fatal error and exits program
 
+	@param message The message to show upon a fatal error
+*/
 Error::Error(string message) {
-	
+
+	// show the error message
 	cout << message << endl;
 	cout << "Press enter to exit program";
-	string conformExit;
+
+	// exit the program
+	string confirmExit;
 	cin.ignore();
-	getline(cin, conformExit);
+	getline(cin, confirmExit);
 	exit(EXIT_FAILURE);
 }
 
 
-Error::~Error()
-{
-}
+Error::~Error(){}

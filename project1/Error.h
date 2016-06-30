@@ -1,9 +1,10 @@
+#pragma once
 #include <string>
 #include <iostream>
 #include <stdlib.h>
-#pragma once
 
 using namespace std;
+
 class Error
 {
 public:
