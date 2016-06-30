@@ -229,7 +229,7 @@ int main()
 		quiz();
 		cout << endl << endl;
 
-		if (m.getPromptResponse() == 1) {
+		if (m.getPromptResponse() == 0) {
 			continue;
 		} else {
 			break;
