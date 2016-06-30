@@ -84,6 +84,36 @@ bool nameSort(string x, string y) {
 }
 
 /**
+	Returns the average quiz results
+
+	@param &answerFile The vector containing all the quiz answers
+	@return The average sult
+*/
+int getQuizAverage(vector<string> &answerFile) {
+
+	Util util = Util();
+
+	// sum the scores
+	int counter = 0;
+	int results = 0;
+	for (auto i = answerFile.begin(); i != answerFile.end(); i++) {
+
+		vector<string> answer = util.splitString(answerFile[counter], ' ');
+		results += std::stoi(answer[1]);
+		counter++;
+
+	}
+
+	// return the average
+	if (counter == 0) {
+		return 0;
+	} else {
+		return (results / counter);
+	}
+
+}
+
+/**
 	main quiz program
 */
 void quiz() {
@@ -125,6 +155,9 @@ void quiz() {
 		answerFile = vector<string>();
 	}
 
+	// get average results of quiz
+	int quizAverage = getQuizAverage(answerFile);
+
 	// find if user exists in answer file
 	int indexCounter = 0;
 	int matchIndex = -1;
@@ -159,6 +192,8 @@ void quiz() {
 		cout << "Your previous score was " << previousScore << endl;
 	}
 
+	cout << "The average score is " << quizAverage << "%" << endl;
+
 	////// Run the quiz
 
 	// holds the questions
@@ -188,6 +223,7 @@ void quiz() {
 	}
 
 	cout << "Time time you got " << percentCorrect << "%" << endl;
+	cout << "The average score is " << quizAverage << "%" << endl;
 
 	// record the answer if there is not a previous schore
 	bool writeFlag = false;

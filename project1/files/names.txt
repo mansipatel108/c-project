@@ -1,6 +1,3 @@
-bobblow 100
+bobblow 50
 dougbrunner 50
 douglasbrunner 100
-joeblow 50
-mansipatel 100
-ouglasrunner 100
