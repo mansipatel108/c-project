@@ -9,8 +9,10 @@
 Error::Error(string message) {
 
 	// show the error message
+	cout << endl << endl;
+	cout << "*****************ERROR*****************" << endl;
 	cout << message << endl;
-	cout << "Press enter to exit program";
+	cout << "Press enter twice to exit program";
 
 	// exit the program
 	string confirmExit;

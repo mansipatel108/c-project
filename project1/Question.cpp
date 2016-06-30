@@ -11,6 +11,12 @@ Question::Question(string question)
 {	
 	Util u = Util();
 	vector<string>questionpie = u.splitString(question,'~');
+
+	// ensure that the question file has the correct number of elements
+	if (questionpie.size() != 6) {
+		Error("IllFormatted Question: " + question);
+	}
+
 	quizQuestion = questionpie[0];
 	answer1 = questionpie[1];
 	answer2 = questionpie[2];

@@ -1,4 +1,4 @@
-what is the best color?~red~blue~purple~yellow~0
-which company is the largest by revenue?~google~microsoft~samsung~apple~2
-who brings presents on christmas~santa~the devil~mr burns~samsung~0
-where am I sitting~on a chair~in a car~on a plane~on cloud nine~3
+What is the second largest country by land area?Canada~Russia~United States~Brazil~0
+Which company is the largest by revenue?Google~Microsoft~Samsung~Apple~2
+How many provinces does Canada have?12~13~9~10~3
+Which language has is weakly typed?Haskell~JavaScript~C++~Java~1

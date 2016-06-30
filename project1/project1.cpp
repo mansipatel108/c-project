@@ -13,7 +13,7 @@
 	Takes the quizfile string and parses it into a vector of question objects
 */
 vector<Question> generateQuestions(string quizFile) {
-
+	
 	// parse the questions/answers by line
 	Util util = Util();
 	vector<string> qa = util.splitString(quizFile, '\n');
@@ -27,7 +27,7 @@ vector<Question> generateQuestions(string quizFile) {
 		questions.push_back(Question(qa[counter]));
 		counter++;
 	}
-
+	
 	return questions;
 
 }
@@ -204,7 +204,12 @@ void quiz() {
 		questions = generateQuestions(fu.file_load("quiz.txt"));
 	}
 	else {
-		Error e = Error("Quiz file could not be found. Contact a programmer.");
+		Error("Quiz file could not be found. Contact a programmer.");
+	}
+
+	// exit the program if there are no questions
+	if (questions.size() == 0) {
+		Error("There are no questions in the quiz file.");
 	}
 
 	// administer quiz and get percentage of correct answers
