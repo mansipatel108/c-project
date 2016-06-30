@@ -27,16 +27,7 @@
     <ClInclude Include="Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QuizFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FileUtility.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WriteResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PromptUser.h">
@@ -62,16 +53,7 @@
     <ClCompile Include="Error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QuizFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FileUtility.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WriteResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PromptUser.cpp">
